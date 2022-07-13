@@ -15,6 +15,7 @@
   <!-- C++ pub sub -->
   <depend>rclcpp</depend>
   <depend>std_msgs</depend>
+  <!--depend>cpp_pubsub</depend-->  <!--to use custom msg & srv-->>
 
 	
   <!-- GENERATING MSG & SRV -->

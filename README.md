@@ -32,5 +32,5 @@ My ROS 2 Examples
 * Basic pub & sub example:
   ```sh
   ros2 launch ~/ros2_ws/src/ros2-examples/cpp_pubsub/launch/cpp_pubsub.launch.py
-  # OR 
+  # OR ros2 launch ~/ros2_ws/src/cpp_pubsub/launch/cpp_pubsub.launch.py
   ```

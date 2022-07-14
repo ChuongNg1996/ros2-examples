@@ -63,7 +63,7 @@ My ROS 2 Examples
   ```
   For further info, examine `publish_address_book.cpp`
 
-* Example with parameters in C++ Class:
+* Example with ***parameters in C++ Class***:
   ```sh
   ros2 launch cpp_pubsub cpp_pubsub_param.py
   ```

@@ -29,7 +29,7 @@ My ROS 2 Examples
   cd ..
   colcon build
   ```
-* Basic pub & sub example:
+* Basic ***pub & sub*** example:
   ```sh
   ros2 launch cpp_pubsub cpp_pubsub.launch.py
 
@@ -37,14 +37,14 @@ My ROS 2 Examples
   For further info, examine `publisher_member_function.cpp` & `subscriber_member_function.cpp`
  
   
-* Basic pub & sub example with custom message:
+* Basic pub & sub example with ***custom message***:
   ```sh
   ros2 launch cpp_pubsub cpp_pubsub_custom_msg.launch.py
   ```
   For further info, examine `publisher_custom_msg.cpp` & `subscriber_custom_msg.cpp`
   
   
-* Basic service & client example:
+* Basic ***service & client*** example:
   ```sh
   # Terminal 1
   ros2 run cpp_pubsub server 
@@ -54,7 +54,7 @@ My ROS 2 Examples
   For further info, examine `server_custom_srv.cpp` & `client_custom_srv.cpp`
   
   
-* Another example with custom message:
+* Another example with ***custom message***:
   ```sh
   # Terminal 1
   ros2 run cpp_pubsub publish_address_book
@@ -62,5 +62,9 @@ My ROS 2 Examples
   ros2 topic echo /address_book
   ```
   For further info, examine `publish_address_book.cpp`
-  
-  
+
+* Example with parameters in C++ Class:
+  ```sh
+  ros2 launch cpp_pubsub cpp_pubsub_param.py
+  ```
+  For further info, examine `cpp_parameters_node.cpp`

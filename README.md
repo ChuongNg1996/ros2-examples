@@ -22,7 +22,7 @@ My ROS 2 Examples
   echo "source ~/ros2_ws/install/setup.bash" >> ~/.bashrc # Source the workspace
   ```
 ### cpp_pubsub package
-* Testes successfully on ROS Foxy (Ubuntu 20.04), failed on ROS Crystal (Ubuntu 18.04)
+* Tested successfully on ROS Foxy (Ubuntu 20.04), failed on ROS Crystal (Ubuntu 18.04)
 * Clone & build the package:
   ```sh
   cd ~/ros2_ws/src/
@@ -43,7 +43,8 @@ My ROS 2 Examples
   ros2 launch basic_ex cpp_pubsub_custom_msg.launch.py
   ```
   For further info, examine `publisher_custom_msg.cpp` & `subscriber_custom_msg.cpp`
-  **It is the good practice to make custom message/service file to a ***separated*** ROS package and build them first, instead of creating them directly in same package as other functionality.**
+  
+  *It is the good practice to make custom message/service file to a ***separated*** ROS package and build them first, instead of creating them directly in same package as other functionality.*
   
 * Basic ***service & client*** example:
   ```sh

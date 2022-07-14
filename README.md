@@ -21,7 +21,7 @@ My ROS 2 Examples
   colcon build # Build the workspace
   echo "source ~/ros2_ws/install/setup.bash" >> ~/.bashrc # Source the workspace
   ```
-### cpp_pubsub package
+### Basic Examples
 * Tested successfully on ROS Foxy (Ubuntu 20.04), failed on ROS Crystal (Ubuntu 18.04)
 * Clone & build the package:
   ```sh
@@ -36,6 +36,7 @@ My ROS 2 Examples
 
   ```
   For further info, examine `publisher_member_function.cpp` & `subscriber_member_function.cpp`
+ 
  
   
 * Basic pub & sub example with ***custom message***:
@@ -56,6 +57,7 @@ My ROS 2 Examples
   For further info, examine `server_custom_srv.cpp` & `client_custom_srv.cpp`
   
   
+  
 * Another example with ***custom message***:
   ```sh
   # Terminal 1
@@ -65,8 +67,12 @@ My ROS 2 Examples
   ```
   For further info, examine `publish_address_book.cpp`
 
+
+
 * Example with ***parameters in C++ Class***:
   ```sh
   ros2 launch basic_ex cpp_pubsub_param.py
   ```
   For further info, examine `cpp_parameters_node.cpp`
+
+

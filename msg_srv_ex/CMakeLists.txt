@@ -15,7 +15,7 @@ find_package(ament_cmake REQUIRED)
 find_package(std_msgs REQUIRED)
 
 # --------------------------------------------------- #
-# ------------------ ROS MSG & SRV ------------------ #
+# ------------ ROS MSG & SRV & ACTION  -------------- #
 # --------------------------------------------------- #
 
 find_package(rosidl_default_generators REQUIRED) # Find the package that generates message code from msg/srv files
@@ -27,6 +27,7 @@ rosidl_generate_interfaces(${PROJECT_NAME}
  "msg/Num.msg"
  "msg/AddressBook.msg"
  "srv/AddThreeInts.srv"
+ "action/Fibonacci.action"
 )
 
 # ---- OR ---- #

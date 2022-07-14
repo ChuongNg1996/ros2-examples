@@ -31,16 +31,15 @@ My ROS 2 Examples
   ```
 * Basic pub & sub example:
   ```sh
-  ros2 launch ~/ros2_ws/src/ros2-examples/cpp_pubsub/launch/cpp_pubsub.launch.py
-  # OR ros2 launch ~/ros2_ws/src/cpp_pubsub/launch/cpp_pubsub.launch.py
+  ros2 launch cpp_pubsub cpp_pubsub.launch.py
+
   ```
   For further info, examine `publisher_member_function.cpp` & `subscriber_member_function.cpp`
  
   
 * Basic pub & sub example with custom message:
   ```sh
-  ros2 launch ~/ros2_ws/src/ros2-examples/cpp_pubsub/launch/cpp_pubsub_custom_msg.launch.py
-  # OR ros2 launch ~/ros2_ws/src/cpp_pubsub/launch/cpp_pubsub_custom_msg.launch.py
+  ros2 launch cpp_pubsub cpp_pubsub_custom_msg.launch.py
   ```
   For further info, examine `publisher_custom_msg.cpp` & `subscriber_custom_msg.cpp`
   

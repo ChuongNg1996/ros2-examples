@@ -70,10 +70,8 @@ ament_target_dependencies(talker_custom_msg rclcpp std_msgs cpp_pubsub)
 add_executable(listener_custom_msg src/subscriber_custom_msg.cpp)
 ament_target_dependencies(listener_custom_msg rclcpp std_msgs cpp_pubsub)
 
-
 add_executable(publish_address_book src/publish_address_book.cpp)
 ament_target_dependencies(publish_address_book rclcpp)
-
 # In order to use the messages generated in the same package we need to use the following CMake code
 rosidl_target_interfaces(publish_address_book
   ${PROJECT_NAME} "rosidl_typesupport_cpp")
@@ -84,7 +82,11 @@ add_executable(server src/server_custom_srv.cpp)
 ament_target_dependencies(server rclcpp cpp_pubsub)   
 
 add_executable(client src/client_custom_srv.cpp)
-ament_target_dependencies(client rclcpp cpp_pubsub)                      
+ament_target_dependencies(client rclcpp cpp_pubsub)    
+
+# New nodes to test parameters
+add_executable(parameter_node src/cpp_parameters_node.cpp)
+ament_target_dependencies(parameter_node rclcpp)
 
 # add the install(TARGETS…) section so ros2 run can FIND your executable
 install(TARGETS
@@ -100,8 +102,18 @@ install(TARGETS
   server
   client
 
+  # New nodes to test parameters
+  parameter_node
+  
   DESTINATION lib/${PROJECT_NAME})
 
-  
+# --------------------------------------------------- #
+# -------------------- ROS LAUNCH ------------------- #
+# --------------------------------------------------- #
+
+install(
+    DIRECTORY launch
+    DESTINATION share/${PROJECT_NAME}
+)
 
 ament_package()

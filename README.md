@@ -14,6 +14,7 @@ My ROS 2 Examples
 
 
 ### Make a ROS 2 Workspace
+* Create the workspace
   ```sh
   mkdir -p ~/ros2_ws/src/
   cd ros2_ws
@@ -21,6 +22,11 @@ My ROS 2 Examples
   ```
 ### cpp_pubsub package
 * Testes successfully on ROS Foxy (Ubuntu 20.04), failed on ROS Crystal (Ubuntu 18.04)
+* Clone & build the package:
+  ```sh
+  cd ~/ros2_ws/src/
+  git clone 
+  ```
 * Basic pub & sub example:
   ```sh
   ros2 launch ~/ros2_ws/src/cpp_pubsub/launch/cpp_pubsub.launch.py 

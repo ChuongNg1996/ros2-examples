@@ -34,3 +34,15 @@ My ROS 2 Examples
   ros2 launch ~/ros2_ws/src/ros2-examples/cpp_pubsub/launch/cpp_pubsub.launch.py
   # OR ros2 launch ~/ros2_ws/src/cpp_pubsub/launch/cpp_pubsub.launch.py
   ```
+* Basic pub & sub example with custom message:
+  ```sh
+  ros2 launch ~/ros2_ws/src/ros2-examples/cpp_pubsub/launch/cpp_pubsub_custom_msg.launch.py
+  # OR ros2 launch ~/ros2_ws/src/cpp_pubsub/launch/cpp_pubsub_custom_msg.launch.py
+  ```
+* Basic srv example:
+  ```sh
+  # Terminal 1
+  ros2 run cpp_pubsub server 
+  # Terminal 2
+  ros2 run cpp_pubsub client 2 3 1
+  ```

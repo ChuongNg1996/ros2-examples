@@ -76,3 +76,12 @@ My ROS 2 Examples
   For further info, examine `cpp_parameters_node.cpp`
 
 
+
+* Example with ***action server & client***:
+  ```sh
+  # Terminal 1
+  ros2 run action_tutorials_cpp fibonacci_action_server
+  # Terminal 2
+  ros2 run action_tutorials_cpp fibonacci_action_client
+  ```
+

@@ -23,12 +23,12 @@ My ROS 2 Examples
   ```
 ### Basic Examples
 * Tested successfully on ROS Foxy (Ubuntu 20.04), failed on ROS Crystal (Ubuntu 18.04)
-* Clone & build the package:
+* Clone & build the relevant packages:
   ```sh
   cd ~/ros2_ws/src/
   git clone https://github.com/ChuongNg1996/ros2-examples
   cd ..
-  colcon build
+  colcon build --packages-select msg_srv_ex basic_ex
   ```
 * Basic ***pub & sub*** example:
   ```sh

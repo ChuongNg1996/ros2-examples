@@ -25,9 +25,11 @@ My ROS 2 Examples
 * Clone & build the package:
   ```sh
   cd ~/ros2_ws/src/
-  git clone 
+  git clone https://github.com/ChuongNg1996/ros2-examples
+  cd ..
+  colcon build
   ```
 * Basic pub & sub example:
   ```sh
-  ros2 launch ~/ros2_ws/src/cpp_pubsub/launch/cpp_pubsub.launch.py 
+  # OR ros2 launch ~/ros2_ws/src/cpp_pubsub/launch/cpp_pubsub.launch.py 
   ```

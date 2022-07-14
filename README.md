@@ -34,14 +34,17 @@ My ROS 2 Examples
   ros2 launch ~/ros2_ws/src/ros2-examples/cpp_pubsub/launch/cpp_pubsub.launch.py
   # OR ros2 launch ~/ros2_ws/src/cpp_pubsub/launch/cpp_pubsub.launch.py
   ```
-  For further info, examine `publisher_member_function.cpp` & `subscriber_member_function.cpp`
-  
+  For further info, examine `publisher_member_function.cpp`, `subscriber_member_function.cpp`, `CMakeLists.txt` & `package.xml`
+ 
   
 * Basic pub & sub example with custom message:
   ```sh
   ros2 launch ~/ros2_ws/src/ros2-examples/cpp_pubsub/launch/cpp_pubsub_custom_msg.launch.py
   # OR ros2 launch ~/ros2_ws/src/cpp_pubsub/launch/cpp_pubsub_custom_msg.launch.py
   ```
+  For further info, examine `publisher_custom_msg.cpp`, `subscriber_custom_msg.cpp`, `CMakeLists.txt` & `package.xml`
+  
+  
 * Basic service & client example:
   ```sh
   # Terminal 1
@@ -49,6 +52,9 @@ My ROS 2 Examples
   # Terminal 2
   ros2 run cpp_pubsub client 2 3 1
   ```
+  For further info, examine `server_custom_srv.cpp`, `client_custom_srv.cpp`, `CMakeLists.txt` & `package.xml`
+  
+  
 * Another example with custom message:
   ```sh
   # Terminal 1
@@ -56,3 +62,6 @@ My ROS 2 Examples
   # Terminal 2
   ros2 topic echo /address_book
   ```
+  For further info, examine `publish_address_book.cpp`, `CMakeLists.txt` & `package.xml`
+  
+  

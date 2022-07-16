@@ -102,7 +102,22 @@ My ROS 2 Examples
   ros2 launch basic_ex launch_turtlesim.launch.py
   ```
   
-  
-  
+ # tf2
+ * Clone & build the relevant packages:
+   ```sh
+   cd ~/ros2_ws/src/
+   git clone https://github.com/ChuongNg1996/ros2-examples
+   cd ..
+   rosdep install -i --from-path src --rosdistro foxy -y # Check & install missing dependencies from package.xml files
+   colcon build --packages-select learning_tf2_cpp # Then build the packages
+   ```
+   
+ * Static transformations:
+    ```sh
+    # Terminal 1
+    ros2 launch learning_tf2_cpp learning_tf2_cpp.launch.py 
+    # Terminal 2
+    ros2 topic echo --qos-reliability reliable --qos-durability transient_local /tf_static
+    ```
   
 

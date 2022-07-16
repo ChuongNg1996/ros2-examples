@@ -98,18 +98,15 @@ My ROS 2 Examples
  
  
  * Example of ***Managing big projects with ROS Launch*** (not completed):
-  ```sh
-  ros2 launch basic_ex launch_turtlesim.launch.py
-  ```
+    ```sh
+    ros2 launch basic_ex launch_turtlesim.launch.py
+    ```
   
  # tf2
- * Clone & build the relevant packages:
+ * I:
    ```sh
-   cd ~/ros2_ws/src/
-   git clone https://github.com/ChuongNg1996/ros2-examples
-   cd ..
-   rosdep install -i --from-path src --rosdistro foxy -y # Check & install missing dependencies from package.xml files
-   colcon build --packages-select learning_tf2_cpp # Then build the packages
+   cd ~/ros2_ws/ # Continuation from "Clone & build the relevant packages" of "Basic Examples"
+   colcon build --packages-select learning_tf2_cpp
    ```
    
  * Static transformations:
@@ -119,5 +116,5 @@ My ROS 2 Examples
     # Terminal 2
     ros2 topic echo --qos-reliability reliable --qos-durability transient_local /tf_static
     ```
-  
+    For further info, examine `learning_tf2_cpp.launch.py` & `static_turtle_tf2_broadcaster.cpp`
 

@@ -109,7 +109,7 @@ My ROS 2 Examples
    colcon build --packages-select learning_tf2_cpp
    ```
    
- * Static Transformations:
+ * Static Transformation:
     ```sh
     # Terminal 1
     ros2 launch learning_tf2_cpp learning_tf2_cpp.launch.py 
@@ -119,3 +119,12 @@ My ROS 2 Examples
     
     For **custom usage**, examine `learning_tf2_cpp.launch.py` & `static_turtle_tf2_broadcaster.cpp`. For **conventional usage** (which is encouraged), examine `static_tf2_sample.launch.py`
 
+  * (Dynamic) Transformation:
+    ```sh
+    # Terminal 1
+    ros2 launch learning_tf2_cpp turtle_tf2_demo.launch.py  # Launch the Turtle
+    # Terminal 2
+    ros2 run turtlesim turtle_teleop_key  # Keyboard to control the Turtle
+    # Terminal 3
+    ros2 run tf2_ros tf2_echo world turtle1 # View the tf message
+    ```

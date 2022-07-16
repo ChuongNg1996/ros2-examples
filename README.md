@@ -28,7 +28,8 @@ My ROS 2 Examples
   cd ~/ros2_ws/src/
   git clone https://github.com/ChuongNg1996/ros2-examples
   cd ..
-  colcon build --packages-select msg_srv_ex basic_ex
+  rosdep install -i --from-path src --rosdistro foxy -y # Check & install missing dependencies from package.xml files
+  colcon build --packages-select msg_srv_ex basic_ex # Then build the packages
   ```
 * Basic ***pub & sub*** example:
   ```sh

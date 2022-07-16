@@ -103,18 +103,19 @@ My ROS 2 Examples
     ```
   
  # tf2
- * I:
+ * Clone & build the relevant packages:
    ```sh
    cd ~/ros2_ws/ # Continuation from "Clone & build the relevant packages" of "Basic Examples"
    colcon build --packages-select learning_tf2_cpp
    ```
    
- * Static transformations:
+ * Static Transformations:
     ```sh
     # Terminal 1
     ros2 launch learning_tf2_cpp learning_tf2_cpp.launch.py 
     # Terminal 2
     ros2 topic echo --qos-reliability reliable --qos-durability transient_local /tf_static
     ```
-    For further info, examine `learning_tf2_cpp.launch.py` & `static_turtle_tf2_broadcaster.cpp`
+    
+    For ***custom usage***, examine `learning_tf2_cpp.launch.py` & `static_turtle_tf2_broadcaster.cpp`. For ***conventional usage*** (which is encouraged), examine `static_tf2_sample.launch.py`
 

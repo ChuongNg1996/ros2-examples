@@ -92,4 +92,4 @@ My ROS 2 Examples
   ```sh
   ros2 launch basic_ex example_main.launch.py
   ```
-  For further info, examine `example_main.launch.py` & `example_substitutions.launch.py`
+  In this example, a ROS Launch file `example_main.launch.py`initiates another ROS Launch file `example_substitutions.launch.py`. For further info, examine `example_main.launch.py` & `example_substitutions.launch.py`

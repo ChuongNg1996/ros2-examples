@@ -22,7 +22,7 @@ My ROS 2 Examples
   echo "source ~/ros2_ws/install/setup.bash" >> ~/.bashrc # Source the workspace
   ```
 ### Basic Examples
-* Tested successfully on ROS Foxy (Ubuntu 20.04), failed on ROS Crystal (Ubuntu 18.04)
+* Tested successfully on ROS Foxy (Ubuntu 20.04), failed on ROS Crystal (Ubuntu 18.04).
 * Clone & build the relevant packages:
   ```sh
   cd ~/ros2_ws/src/
@@ -36,7 +36,7 @@ My ROS 2 Examples
   ros2 launch basic_ex cpp_pubsub.launch.py
 
   ```
-  For further info, examine `publisher_member_function.cpp` & `subscriber_member_function.cpp`
+  For further info, examine `publisher_member_function.cpp` & `subscriber_member_function.cpp`.
  
  
   
@@ -44,7 +44,7 @@ My ROS 2 Examples
   ```sh
   ros2 launch basic_ex cpp_pubsub_custom_msg.launch.py
   ```
-  For further info, examine `publisher_custom_msg.cpp` & `subscriber_custom_msg.cpp`
+  For further info, examine `publisher_custom_msg.cpp` & `subscriber_custom_msg.cpp`.
   
   *It is the good practice to make custom message/service file to a ***separated*** ROS package and build them first, instead of creating them directly in same package as other functionality.*
   
@@ -55,7 +55,7 @@ My ROS 2 Examples
   # Terminal 2
   ros2 run basic_ex client 2 3 1
   ```
-  For further info, examine `server_custom_srv.cpp` & `client_custom_srv.cpp`
+  For further info, examine `server_custom_srv.cpp` & `client_custom_srv.cpp`.
   
   
   
@@ -66,7 +66,7 @@ My ROS 2 Examples
   # Terminal 2
   ros2 topic echo /address_book
   ```
-  For further info, examine `publish_address_book.cpp`
+  For further info, examine `publish_address_book.cpp`.
 
 
 
@@ -85,7 +85,7 @@ My ROS 2 Examples
   # Terminal 2
   ros2 run action_tutorials_cpp fibonacci_action_client
   ```
-  For further info, examine `fibonacci_action_server.cpp` & `fibonacci_action_client.cpp` 
+  For further info, examine `fibonacci_action_server.cpp` & `fibonacci_action_client.cpp`. 
   
 
 
@@ -93,7 +93,7 @@ My ROS 2 Examples
   ```sh
   ros2 launch basic_ex example_main.launch.py
   ```
-  In this example, a ROS Launch file `example_main.launch.py`initiates another ROS Launch file `example_substitutions.launch.py`. For further info, examine `example_main.launch.py` & `example_substitutions.launch.py`
+  In this example, a ROS Launch file `example_main.launch.py`initiates another ROS Launch file `example_substitutions.launch.py`. For further info, examine `example_main.launch.py` & `example_substitutions.launch.py`.
   
  
  
@@ -117,7 +117,7 @@ My ROS 2 Examples
     ros2 topic echo --qos-reliability reliable --qos-durability transient_local /tf_static
     ```
     
-    For **custom usage**, examine `learning_tf2_cpp.launch.py` & `static_turtle_tf2_broadcaster.cpp`. For **conventional usage** (which is encouraged), examine `static_tf2_sample.launch.py`
+    For **custom usage**, examine `learning_tf2_cpp.launch.py` & `static_turtle_tf2_broadcaster.cpp`. For **conventional usage** (which is encouraged), examine `static_tf2_sample.launch.py`.
 
   * (Dynamic) Transformation Broadcaster:
     ```sh
@@ -128,3 +128,4 @@ My ROS 2 Examples
     # Terminal 3
     ros2 run tf2_ros tf2_echo world turtle1 # View the tf message
     ```
+    For further info, examine `turtle_tf2_demo.launch.py` & `turtle_tf2_broadcaster.cpp`.

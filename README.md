@@ -58,7 +58,7 @@ My ROS 2 Examples
   
   
   
-* Another example with ***custom message***:
+* Another example of ***custom message***:
   ```sh
   # Terminal 1
   ros2 run basic_ex publish_address_book
@@ -69,7 +69,7 @@ My ROS 2 Examples
 
 
 
-* Example with ***parameters in C++ Class***:
+* Example of ***parameters in C++ Class***:
   ```sh
   ros2 launch basic_ex cpp_pubsub_param.py
   ```
@@ -77,7 +77,7 @@ My ROS 2 Examples
 
 
 
-* Example with ***action server & client***:
+* Example of ***action server & client***:
   ```sh
   # Terminal 1
   ros2 run action_tutorials_cpp fibonacci_action_server
@@ -88,8 +88,18 @@ My ROS 2 Examples
   
 
 
-* Example with ***Substitution in ROS Launch***: 
+* Example of ***Substitution in ROS Launch***: 
   ```sh
   ros2 launch basic_ex example_main.launch.py
   ```
   In this example, a ROS Launch file `example_main.launch.py`initiates another ROS Launch file `example_substitutions.launch.py`. For further info, examine `example_main.launch.py` & `example_substitutions.launch.py`
+  
+ 
+ 
+ * Example of ***Managing big projects with ROS Launch*** (not completed):
+  ```sh
+  ros2 launch basic_ex launch_turtlesim.launch.py
+  ```
+  
+  
+

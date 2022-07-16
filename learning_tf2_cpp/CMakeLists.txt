@@ -23,8 +23,13 @@ find_package(tf2 REQUIRED)
 find_package(tf2_ros REQUIRED)
 find_package(turtlesim REQUIRED)
 
+# --------------------------------------------------- #
+# -------------------- ROS NODES -------------------- #
+# --------------------------------------------------- #
 
+# add the executable and name it talker so you can RUN your node using ros2 run
 add_executable(static_turtle_tf2_broadcaster src/static_turtle_tf2_broadcaster.cpp)
+
 ament_target_dependencies(
    static_turtle_tf2_broadcaster
    geometry_msgs
@@ -34,8 +39,21 @@ ament_target_dependencies(
    turtlesim
 )
 
+add_executable(turtle_tf2_broadcaster src/turtle_tf2_broadcaster.cpp)
+
+ament_target_dependencies(
+   turtle_tf2_broadcaster
+   geometry_msgs
+   rclcpp
+   tf2
+   tf2_ros
+   turtlesim
+)
+
+# add the install(TARGETS…) section so ros2 run can FIND your executable
 install(TARGETS
    static_turtle_tf2_broadcaster
+   turtle_tf2_broadcaster
    DESTINATION lib/${PROJECT_NAME})
 
 

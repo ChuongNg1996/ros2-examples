@@ -117,5 +117,5 @@ My ROS 2 Examples
     ros2 topic echo --qos-reliability reliable --qos-durability transient_local /tf_static
     ```
     
-    For ***custom usage***, examine `learning_tf2_cpp.launch.py` & `static_turtle_tf2_broadcaster.cpp`. For ***conventional usage*** (which is encouraged), examine `static_tf2_sample.launch.py`
+    For **custom usage**, examine `learning_tf2_cpp.launch.py` & `static_turtle_tf2_broadcaster.cpp`. For **conventional usage** (which is encouraged), examine `static_tf2_sample.launch.py`
 

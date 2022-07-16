@@ -85,3 +85,11 @@ My ROS 2 Examples
   ros2 run action_tutorials_cpp fibonacci_action_client
   ```
   For further info, examine `fibonacci_action_server.cpp` & `fibonacci_action_client.cpp` 
+  
+
+
+* Example with ***Substitution in ROS Launch***: 
+  ```sh
+  ros2 launch basic_ex example_main.launch.py
+  ```
+  For further info, examine `example_main.launch.py` & `example_substitutions.launch.py`

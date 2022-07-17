@@ -1,6 +1,11 @@
 # ROS 2 Examples
 My ROS 2 Examples
 
+## Utilities
+  ```sh
+  ros2 pkg create --build-type ament_cmake <package_name> # Create a ros2 package
+  ```
+
 ## Tutorials
 
 ### Resources

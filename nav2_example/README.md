@@ -22,7 +22,7 @@
     To install the path
 3. Start with a new `ROS launch` file named `nav2_master_launch.py` which is based on master launch file of `nav2_bringup` package.
 
-## (ROS LAUNCH) COMPONENT: Robot State Publisher
+## (ROS LAUNCH) COMPONENT #1: Robot State Publisher
 4. (Arbitrary Order) Copy & Paste `urdf` folder from `nav2_bringup` package. Create path to the folder:
     In `CMakeList.txt`:
     ```sh
@@ -34,6 +34,7 @@
     ```
     -> *Import the path* in launch file (**step N.1**).
 
+## (ROS LAUNCH) COMPONENT #2: Gazebo Environment
 5. (Arbitrary Order) Copy & Paste `maps` folder from `nav2_bringup` package. Create path to the folder:
     In `CMakeList.txt`:
     ```sh
@@ -53,3 +54,4 @@
     DESTINATION share/${PROJECT_NAME}
     )
     ```
+    In `visual` tag of both `wheel_left_link` and `wheel_right_link`, `<uri>model://turtlebot3_waffle/meshes/right_tire.dae</uri>` is not found -> caused crashed -> change to same cylinder as `collision` tage.

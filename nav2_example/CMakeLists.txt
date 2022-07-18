@@ -60,4 +60,16 @@ install(
     DESTINATION share/${PROJECT_NAME}
 )
 
+# rviz folder
+install(
+    DIRECTORY rviz
+    DESTINATION share/${PROJECT_NAME}
+)
+
+# params folder
+install(
+  DIRECTORY params
+  DESTINATION share/${PROJECT_NAME}
+)
+
 ament_package()

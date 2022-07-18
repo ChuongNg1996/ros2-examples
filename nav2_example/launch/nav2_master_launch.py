@@ -10,7 +10,7 @@ a lot of assumptions will be made and a lot of them will be wrong.
 VIEW 1: WATERFALL VIEW
 * This VIEW describe the launch file structure as a whole
 
-    STEP 0:                 Import MODULES/LIBRARIES
+    STEP 0:                 Import MODULES/LIBRARIES/Functions
 
     STEP 1 (OPTIONAL):      Get DIRECTORIES to LAUNCH FOLDERS of relevant packages (to launch child launch files)
                             * This is OPTIONAL because the values can be assigned directly in `IncludeLaunchDescription( PythonLaunchDescriptionSource ())`
@@ -63,15 +63,32 @@ VIEW 2: UNIT VIEW
 
                             And RETURN the LAUNCH DESCRIPTION
             
+
+
 * COMPONENT 2: GAZEBO Simulation
 
-    STEP 0:                 ExecuteProcess, IfCondition
+    STEP 0:                 ExecuteProcess, IfCondition, PythonExpression                   (Import MODULES/LIBRARIES/Functions)
 
-    STEP 1 (OPTIONAL):      LAUNCH CONFIGURATION VARIABLES: 'use_simulator', 'world', 'headless' 
+    STEP 1 (OPTIONAL):      'use_simulator', 'world', 'headless'                            (LAUNCH CONFIGURATION VARIABLES)
 
     STEP 2:                 EXECUTE CMD: start_gazebo_server_cmd = ExecuteProcess(), start_gazebo_client_cmd = ExecuteProcess()
 
     STEP 3:                 ADD everything to LAUNCH DESCRIPTION & RETURN the LAUNCH DESCRIPTION
+
+
+
+* COMPONENT 3: Rviz
+
+    STEP 0:                 IncludeLaunchDescription, PythonLaunchDescriptionSource         (Import MODULES/LIBRARIES/Functions)
+
+    STEP 1 (OPTIONAL):      'rviz_config_file', 'use_rviz'                                  (LAUNCH CONFIGURATION VARIABLES)
+
+    STEP 2:                 Run child ROS Launch file: rviz_cmd = IncludeLaunchDescription(PythonLaunchDescriptionSource())
+
+    STEP 3:                 ADD everything to LAUNCH DESCRIPTION & RETURN the LAUNCH DESCRIPTION
+
+* COMPONENT 4: Navigation 2 ...
+* For Hierarchy & Functionalities of the Components/Files, go to the end.
 
 """
 
@@ -120,9 +137,11 @@ def generate_launch_description():
     # nav2_example_launch_dir = ~/.../nav2_example/launch
     # Remember to create PATH to `launch` folder (in nav2_example) in CMakeLists.txt
 
+    nav2_bt_navigator_dir = get_package_share_directory('nav2_bt_navigator')
+
     # Can add more LAUNCH FOLDERS of OTHER PACKAGES, uncomment the belows
     # package_1_dir = get_package_share_directory('package_1') 
-    # package_1_dir = os.path.join(package_1_dir, 'launch') 
+    # package_1_launch_dir = os.path.join(package_1_dir, 'launch') 
 
     # ----------------------------------------------------------- #
     # ---- STEP 2 (OPTIONAL): LAUNCH CONFIGURATION VARIABLES ---- #
@@ -133,7 +152,6 @@ def generate_launch_description():
     namespace = LaunchConfiguration('namespace')
     use_namespace = LaunchConfiguration('use_namespace')
     use_sim_time = LaunchConfiguration('use_sim_time') 
-
     slam = LaunchConfiguration('slam')
     map_yaml_file = LaunchConfiguration('map')
     params_file = LaunchConfiguration('params_file')
@@ -148,7 +166,6 @@ def generate_launch_description():
     use_rviz = LaunchConfiguration('use_rviz')
     headless = LaunchConfiguration('headless')
     world = LaunchConfiguration('world')
-
 
     remappings = [('/tf', 'tf'),
                   ('/tf_static', 'tf_static')]
@@ -185,6 +202,22 @@ def generate_launch_description():
         'map',
         default_value=os.path.join(nav2_example_dir, 'maps', 'turtlebot3_world.yaml'),
         description='Full path to map file to load')
+    
+    declare_params_file_cmd = DeclareLaunchArgument(
+        'params_file',
+        default_value=os.path.join(nav2_example_dir, 'params', 'nav2_params.yaml'),
+        description='Full path to the ROS2 parameters file to use for all launched nodes')
+    
+    declare_bt_xml_cmd = DeclareLaunchArgument(
+        'default_bt_xml_filename',
+        default_value=os.path.join(
+            nav2_bt_navigator_dir,
+            'behavior_trees', 'navigate_w_replanning_and_recovery.xml'),
+        description='Full path to the behavior tree xml file to use')
+    
+    declare_autostart_cmd = DeclareLaunchArgument(
+        'autostart', default_value='true',
+        description='Automatically startup the nav2 stack')
 
     # Linked with: use_robot_state_pub = LaunchConfiguration('use_robot_state_pub')
     declare_use_robot_state_pub_cmd = DeclareLaunchArgument(
@@ -197,6 +230,16 @@ def generate_launch_description():
         'use_simulator',
         default_value='True',
         description='Whether to start the simulator')
+    
+    declare_rviz_config_file_cmd = DeclareLaunchArgument(
+        'rviz_config_file',
+        default_value=os.path.join(nav2_example_dir, 'rviz', 'nav2_default_view.rviz'),
+        description='Full path to the RVIZ config file to use')
+    
+    declare_use_rviz_cmd = DeclareLaunchArgument(
+        'use_rviz',
+        default_value='True',
+        description='Whether to start RVIZ')
     
     declare_simulator_cmd = DeclareLaunchArgument(
         'headless',
@@ -258,8 +301,31 @@ def generate_launch_description():
     # -------------- STEP 5: ROS LAUNCH FILES ------------------- #
     # ----------------------------------------------------------- #
 
-    
+    ################################################################
+                        # COMPONENT 3: Rviz
+    ################################################################
 
+    rviz_cmd = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource(os.path.join(nav2_example_launch_dir, 'rviz_launch.py')),
+        condition=IfCondition(use_rviz),
+        launch_arguments={'namespace': '',
+                          'use_namespace': 'False',
+                          'rviz_config': rviz_config_file}.items())
+    
+    ################################################################
+                    # COMPONENT 4: Navigation 2
+    ################################################################
+
+    bringup_cmd = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource(os.path.join(nav2_example_launch_dir, 'bringup_launch.py')),
+        launch_arguments={'namespace': namespace,
+                          'use_namespace': use_namespace,
+                          'slam': slam,
+                          'map': map_yaml_file,
+                          'use_sim_time': use_sim_time,
+                          'params_file': params_file,
+                          'default_bt_xml_filename': default_bt_xml_filename,
+                          'autostart': autostart}.items())
 
     # ----------------------------------------------------------- #
     # --------- STEP 6: Create the LAUNCH DESCRIPTION ------------ #
@@ -273,15 +339,75 @@ def generate_launch_description():
         declare_use_sim_time_cmd,
         declare_slam_cmd,
         declare_map_yaml_cmd,
+        declare_params_file_cmd,
+        declare_bt_xml_cmd,
+        declare_autostart_cmd,
+        
         declare_use_robot_state_pub_cmd,
         declare_use_simulator_cmd,
-
+        declare_rviz_config_file_cmd,
+        declare_use_rviz_cmd,
         declare_simulator_cmd,
         declare_world_cmd,
         
-        # Execute Command Line
+        # Execute Command Line (For Gazebo Simulation)
         start_gazebo_server_cmd,
         start_gazebo_client_cmd,
 
         # launch ROS NODES
-        start_robot_state_publisher_cmd])
+        start_robot_state_publisher_cmd,
+        
+        # Run ROS Launch files
+        rviz_cmd,
+        bringup_cmd,
+        ])
+
+"""
+
+# ----------------------------------------------------------- #
+# -------------------- FILE HIERARCHY------------------------ #
+# ----------------------------------------------------------- #
+
+[nav2_master_launch.py]
+
+    + ['robot_state_publisher'] ROS Node: ROBOT STATE PUBLISHER 
+        ++ /urdf
+
+    + Execute cmd: GAZEBO Simulation
+        ++ /worlds
+
+    + [rviz_launch.py] ROS Launch: Rviz
+        ++ ['rviz2'] ROS Node: Start Rviz
+        ++ /rviz/nav2_default_view.rviz
+    
+    + [bringup_launch.py] ROS Launch: Navigation 2
+        ++ [slam_launch.py] ROS Launch: SLAM
+            +++ /params/nav2_params.yaml
+            +++ ['slam_toolbox'] ROS Package
+            +++ ['map_saver_server'] ROS Node -> To save Map
+            +++ ['lifecycle_manager'] ROS Node: 'lifecycle_manager_slam'
+                ++++ lifecycle_nodes = ['map_saver'] 
+
+        ++ [localization_launch.py] ROS Launch: Localization
+            +++ /maps/turtlebot3_world.yaml
+            +++ /params/nav2_params.yaml
+            +++ ['map_server'] ROS Node -> Access static Map
+            +++ ['amcl'] ROS Node -> AMCL Localization Method
+            +++ ['lifecycle_manager'] ROS Node: 'lifecycle_manager_localization'
+                ++++ lifecycle_nodes = ['map_server', 'amcl']
+
+        ++ [navigation_launch.py] ROS Launch: Navigation
+            +++ /params/nav2_params.yaml
+            +++ ['nav2_bt_navigator'] ROS Package: Behavivour Tree
+            +++ ['controller_server'] ROS Node: Local Planner
+            +++ ['planner_server'] ROS Node: Global Planner
+            +++ ['recoveries_server'] ROS Node: Recovery Behaviour
+            +++ ['bt_navigator'] ROS Node: Behaviour Tree
+            +++ ['waypoint_follower'] ROS Node: Waypoint Follower
+            +++ ['lifecycle_manager'] ROS Node: 'lifecycle_manager_navigation'
+                ++++ lifecycle_nodes = ['controller_server', 'planner_server', 'recoveries_server', 'bt_navigator', 'waypoint_follower']
+
+        ++ ['nav2_bt_navigator'] ROS Package: Behaviour Tree
+    
+    + ['nav2_bt_navigator'] ROS Package: Behaviour Tree
+"""

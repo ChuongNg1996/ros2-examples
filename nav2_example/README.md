@@ -67,7 +67,7 @@
     ```
     In `visual` tag of both `wheel_left_link` and `wheel_right_link`, `<uri>model://turtlebot3_waffle/meshes/right_tire.dae</uri>` is not found -> caused crashed -> change to same cylinder as `collision` tage.
 
-## (ROS LAUNCH) COMPONENT #3: Rviz
+### (ROS LAUNCH) COMPONENT #3: Rviz
 7. (Arbitrary Order) Copy & Paste `rviz` folder from `nav2_bringup` package. Create path to the folder:
     In `CMakeList.txt`:
     ```sh

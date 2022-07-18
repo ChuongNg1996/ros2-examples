@@ -1,13 +1,13 @@
 # Nav2 Reverse Engineering Process (ROS 2)
 
-## Installation
+## 1. Installation
    ```sh
    # <distro> = foxy in this example
    sudo apt install ros-<ros2-distro>-navigation2 
    sudo apt install ros-<ros2-distro>-nav2-bringup
    sudo apt install ros-<ros2-distro>-turtlebot3*
    ```
-## Reverse Engineering Process
+## 2. Reverse Engineering Process
 
 * Read this in conjunction with `nav2_master_launch.py`
 1. Create ROS 2 package: `ros2 pkg create --build-type ament_cmake <package_name> # Create a ros2 package`
@@ -139,7 +139,7 @@
     + ['nav2_bt_navigator'] ROS Package: Behaviour Tree
    ```
 
-## Run the example
+## 3. Run the example
    ```sh
     export TURTLEBOT3_MODEL=waffle
     export GAZEBO_MODEL_PATH=$GAZEBO_MODEL_PATH:/opt/ros/<ros2-distro>/share/turtlebot3_gazebo/models # <ros2-distro> = foxy in this example
